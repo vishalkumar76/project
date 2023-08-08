@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    
+    <title>Special</title>
+
+    <style>
+      .number-badge {
+          display: inline-block;
+          background-color: #ffc107;
+          color: #333;
+          padding: 5px 8px;
+          border-radius: 50%;
+      }
+      #paymentPopup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+    }
+
+    .popup-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+       
+   
+
+  </style>
+  
+</head>
+<body class="bg-dark">
+  <div id="paymentPopup" class="popup-card">
+    <div class="popup-content">
+        <span class="close" onclick="hidePopup()">&times;</span>
+        <h3>Payment Summary</h3>
+        <p>Total Number of Clicked Cards: <span id="popupTotalClickedCards"></span></p>
+        <p>Total Price of Clicked Cards: <span id="popupTotalPrice"></span></p>
+        <button class="btn btn-primary" onclick="payCash()">Pay Cash</button>
+        <a href="/payment.html" class="btn btn-primary">pay online</a>
+    </div>
+  </div>
+ 
+ 
+  <nav class="navbar navbar-expand-md navbar-light fixed-top bg-warning">
+    <a class="navbar-brand" href="images\logo1.png" target="_blank">
+      <img src="/images/logo1.png" width="70" height="70" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-xxl-5 ">
+        <li class="nav-item">
+          <a class="nav-link " href="/index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/gallery2.html">Dishes</a>
+        </li>
+        <li class="nav-item">
+          <p class="nav-link ">Total Number of Clicked Cards: <span id="totalClickedCards" class="number-badge">0</span></p>
+          <p class="nav-link ">Total Price of Clicked Cards: <span id="totalPrice" class="number-badge">0.00</span></p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);" onclick="showPopup()">Payment</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+          
+              
+     
+          <center style="margin-top: 150px;"><h1 > Special </h1></center>
+          <div class="container " id="drinks">
+           <div class="row">
+            <div class="col-md-4">
+              <div class="card col-md-6" style="width: 18rem;" onclick="handleCardClick(this, 'card1')">
+    
+         
+           <img src="/images/special/tamil.jpg" class="card-img-top" alt="..." height="100px">
+           <div class="card-body">
+             <h5 class="card-title">Tamil cuisine</h5>
+             <p class="card-text " >The special tamil cuisine which look delicious and tasty to eat</p>
+             Current Price: <i class="fa fa-inr"></i> <b>190.00</b>
+             <p> &#9733; &#9733;  &#9733; 
+              
+             </p>
+             <button class="btn btn-primary">Add item</button>
+
+
+             </div>
+    
+           </div>
+         </div>
+    
+         <div class="col-md-4">
+          <div class="card col-md-6" style="width: 18rem;" onclick="handleCardClick(this, 'card2')">
+
+          
+            <img src="/images/special/jagannath.jpg" class="card-img-top" alt="..." height="100px">
+            <div class="card-body">
+              <h5 class="card-title">jagannath ji</h5>
+              <p class="card-text">Our special and traditionl food of jagannath yatra days </p>
+              Current Price: <i class="fa fa-inr"></i> <b>380.00</b>
+              <p> &#9733; &#9733; &#9733; &#9733; &#9734;
+              
+              </p>
+              <button class="btn btn-primary">Add item</button>
+
+
+              </div>
+    
+            </div>
+          </div>
+    
+          <div class="col-md-4">
+            <div class="card col-md-6" style="width: 18rem;" onclick="handleCardClick(this, 'card3')">
+  
+          
+            <img src="/images/special/Marathi.jpg" class="card-img-top" alt="..." height="100px">
+            <div class="card-body">
+              <h5 class="card-title"> Modak</h5>
+              <p class="card-text"> Traditional modak of Maharashtra who loves by everyone  </p>
+              Current Price: <i class="fa fa-inr"></i> <b>400.00</b>
+              <p> &#9733; &#9733; &#9733; &#9733;
+              
+              </p>
+              <button class="btn btn-primary">Add item</button>
+
+              </div>
+    
+            </div>
+          </div>
+    
+             
+           </div>
+         </div>
+            
+    
+        
+          <div class="container mt-4 " id="courses">
+           <div class="row">
+            <div class="col-md-4">
+              <div class="card col-md-6" style="width: 18rem;" onclick="handleCardClick(this, 'card4')">
+    
+         
+           <img src="/images/special/vart.jpg" class="card-img-top" alt="..." height="100px">
+           <div class="card-body">
+             <h5 class="card-title">Upvas/Vart</h5>
+             <p class="card-text"> <section> for who has vart without any spices and other thing </section></p>
+             Current Price: <i class="fa fa-inr"></i><b>290.00</b> 
+             <p> &#9733; &#9733; &#9733;
+              
+             </p>
+             <button class="btn btn-primary">Add item</button>
+
+             </div>
+    
+           </div>
+         </div>
+    
+         <div class="col-md-4">
+          <div class="card col-md-6" style="width: 18rem;" onclick="handleCardClick(this, 'card5')">
+
+          
+            <img src="/images/special/ghewar.jpg" class="card-img-top" alt="..." height="100px">
+            <div class="card-body">
+              <h5 class="card-title">Ghewar</h5>
+              <p class="card-text">this is our special and loveable desert by every age group</p>
+              Current Price: <i class="fa fa-inr"></i> <b>300.00</b>
+              <p> &#9733; &#9733;  &#9733; &#9734;
+              
+              </p>
+              <button class="btn btn-primary">Add item</button>
+
+              </div>
+    
+            </div>
+          </div>
+    
+          <div class="col-md-4">
+            <div class="card col-md-6" style="width: 18rem;" onclick="handleCardClick(this, 'card1')">
+  
+          
+            <img src="/images/special/dal bhati.jpg" class="card-img-top" alt="..." height="100px">
+            <div class="card-body">
+              <h5 class="card-title">Dal Bhati</h5>
+              <p class="card-text">Dal bhati special for less spices lover </p>
+              Current Price: <i class="fa fa-inr"></i> <b>100.00</b>
+              <p> &#9733; &#9733; &#9733; 
+              
+              </p>
+              <button class="btn btn-primary">Add item</button>
+
+              </div>
+    
+            </div>
+          </div>
+    
+             
+           </div>
+         </div>
+
+         <footer class="footer bg-dark text-light" style="height: 40vh;">
+          <div class="container mt-3">
+              <div class="row">
+                  <div class="col-sm-6">
+                      <h5>About Us</h5>
+                      <p>  Here at Trapple, we build products & solutions that redefines the food ordering & delivery in India, every single hour. 
+                        Every bit of your work at Trapple will help us change the way India eats!</p>
+                  </div>
+                  <div class="col-sm-3">
+                      <h4> Links</h4>
+                      <ul class="list-unstyled">
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="gallery2.html">Dishes</a></li>
+                          <li><a href="about.html">About</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-3">
+                      <h5>Contact</h5>
+                      <ul class="list-unstyled">
+                          <li>Email: vishal@example.com</li>
+                          <li>Phone: XXXX123XXX</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </footer>
+
+      <script>
+    
+        let clickedCards = {};
+
+        
+        let totalClickedCards = 0;
+        let totalPrice = 0;
+
+        
+        function updateNumberBadges() {
+            const totalClickedCardsElement = document.getElementById('totalClickedCards');
+            const totalPriceElement = document.getElementById('totalPrice');
+
+          
+            totalClickedCardsElement.textContent = `${totalClickedCards}`;
+            totalPriceElement.textContent = `${totalPrice.toFixed(2)}`;
+
+            
+            totalClickedCardsElement.classList.add('number-badge');
+            totalPriceElement.classList.add('number-badge');
+        }
+
+        function handleCardClick(card, cardId) {
+            
+            const cardPrice = parseFloat(card.querySelector('.card-body').innerText.match(/(\d+\.\d+)/)[0]);
+
+
+
+            if (!clickedCards[cardId]) {
+                
+                totalClickedCards += 1;
+                clickedCards[cardId] = true; 
+            }
+
+            
+
+            totalPrice += cardPrice;
+
+            
+            updateNumberBadges();
+
+            
+            console.log("Clicked Cards Object:", clickedCards);
+            console.log("Total Clicks for Card " + cardId + ":", totalClickedCards);
+        }
+
+
+        updateNumberBadges();
+        function showPopup() {
+            const popup = document.getElementById('paymentPopup');
+            const popupTotalClickedCardsElement = document.getElementById('popupTotalClickedCards');
+            const popupTotalPriceElement = document.getElementById('popupTotalPrice');
+
+           
+            popupTotalClickedCardsElement.textContent = `${totalClickedCards}`;
+            popupTotalPriceElement.textContent = `${totalPrice.toFixed(2)}`;
+
+           
+            popup.style.display = 'block';
+        }
+
+
+        function hidePopup() {
+            const popup = document.getElementById('paymentPopup');
+            popup.style.display = 'none';
+        }
+
+        
+        function payCash() {
+
+           
+            alert('Your order has been successfully placed! Thank you for your purchase.');
+
+
+            clickedCards = {};
+            totalClickedCards = 0;
+            totalPrice = 0;
+
+           
+            updateNumberBadges();
+
+           
+            hidePopup();
+        }
+
+    </script>
+  
+            
+
+</body>
+</html>

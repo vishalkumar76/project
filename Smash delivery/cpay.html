@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Confirmation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #292525;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 30px;
+            border: 1px solid #070707;
+            border-radius: 10px;
+            background-color: #c2f08d;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #f50baf;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .payment-details {
+            font-weight: bold;
+            color: #030303;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Payment Confirmation</h1>
+        <div class="payment-details">
+            <p>Card Number: <span id="cardNumber"></span></p>
+            <p>Expiry Date: <span id="expiryDate"></span></p>
+            <p>CVV: <span id="cvv"></span></p>
+            <p>Name on Card: <span id="nameOnCard"></span></p>
+        </div>
+    </div>
+    <script>
+        // Retrieve payment details from localStorage (data passed from the previous page)
+        const paymentDetails = JSON.parse(localStorage.getItem('paymentDetails'));
+
+        // Display the payment details on the confirmation page
+        document.getElementById('cardNumber').innerText = paymentDetails.cardNumber;
+        document.getElementById('expiryDate').innerText = paymentDetails.expiryDate;
+        document.getElementById('cvv').innerText = paymentDetails.cvv;
+        document.getElementById('nameOnCard').innerText = paymentDetails.nameOnCard;
+
+        // Clear the payment details from localStorage after displaying them
+        localStorage.removeItem('paymentDetails');
+    </script>
+</body>
+</html>
